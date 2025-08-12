@@ -1,0 +1,136 @@
+/* ========== Base Container ========== */
+.topic-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(to bottom, #0d0d1a, #1a1a2e);
+  min-height: 100vh;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ========== Toolbar ========== */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 1.5rem;
+}
+
+.back-button,
+.logout-button {
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #2d2d44;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.back-button:hover,
+.logout-button:hover {
+  background-color: #6c63ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+}
+
+/* ========== Title ========== */
+.topic-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* ========== Content Box ========== */
+.content-box {
+  background-color: #1f1f35;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+}
+
+.content-box:hover {
+  transform: scale(1.01);
+}
+
+/* ========== Section Headings ========== */
+.section-heading {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  border-left: 4px solid #6c63ff;
+  padding-left: 0.6rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ========== Importance Text ========== */
+.importance-text {
+  font-size: 1rem;
+  color: #d0d0e6;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.info-link a {
+  color: #6c63ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.info-link a:hover {
+  text-decoration: underline;
+}
+
+/* ========== Question List ========== */
+.question-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.question-item {
+  background: #2d2d44;
+  margin-bottom: 0.7rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.question-item:hover {
+  background-color: #3b3b5c;
+  transform: translateX(5px);
+}
+
+.q-icon {
+  margin-right: 0.7rem;
+  color: #ff4d6d;
+  font-size: 1.2rem;
+}
+
+/* ========== Fallbacks ========== */
+.no-questions {
+  font-size: 1rem;
+  color: #aaa;
+  text-align: center;
+  padding: 1rem;
+}
+
+.loading-or-error {
+  text-align: center;
+  padding: 2rem;
+  color: #ccc;
+  font-size: 1.1rem;
+}

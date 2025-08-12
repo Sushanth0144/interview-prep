@@ -1,0 +1,25 @@
+<div class="admin-container">
+  <aside class="admin-sidebar">
+    <h2>Admin Panel</h2>
+    <button
+      (click)="showSection('topics')"
+      [class.active]="activeSection === 'topics'"
+    >
+      Manage Topics
+    </button>
+    <button
+      (click)="showSection('questions')"
+      [class.active]="activeSection === 'questions'"
+    >
+      Manage Questions
+    </button>
+    <button class="logout" (click)="logout()">Logout</button>
+  </aside>
+
+  <main class="admin-content">
+    <app-admin-topics *ngIf="activeSection === 'topics'"></app-admin-topics>
+    <app-admin-questions
+      *ngIf="activeSection === 'questions'"
+    ></app-admin-questions>
+  </main>
+</div>

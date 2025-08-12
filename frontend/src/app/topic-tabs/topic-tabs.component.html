@@ -1,0 +1,53 @@
+<div class="tabs-container">
+  <div class="toolbar">
+    <button mat-button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+  </div>
+
+  <h1 class="center-text">Let's Start Learning</h1>
+
+  <div class="topic-grid">
+    <div
+      class="topic-card"
+      *ngFor="let topic of topics"
+      (click)="navigateToTopic(topic.id)"
+    >
+      <div class="topic-card-left">
+        <img
+          [src]="'assets/images/' + topic.image"
+          alt="{{ topic.name }}"
+          (error)="onImageError($event)"
+        />
+      </div>
+      <div class="topic-card-right">
+        <h3>{{ topic.name }}</h3>
+        <p>Quiz • {{ topic.questionsCount }} questions</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <div>
+        <h4>Explore</h4>
+        <a href="#">Web Development</a>
+        <a href="#">Data Science</a>
+        <a href="#">Certifications</a>
+      </div>
+      <div>
+        <h4>About</h4>
+        <a href="#">About us</a>
+        <a href="#">Contact</a>
+        <a href="#">Careers</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Interview Prep App. All rights reserved.
+    </div>
+  </footer>
+</div>

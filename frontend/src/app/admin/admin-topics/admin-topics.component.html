@@ -1,0 +1,41 @@
+<h2>Manage Topics</h2>
+
+<form (ngSubmit)="createTopic()" class="topic-form">
+  <input
+    [(ngModel)]="newTopic.name"
+    name="name"
+    placeholder="Topic Name"
+    required
+  />
+  <input
+    [(ngModel)]="newTopic.description"
+    name="description"
+    placeholder="Description"
+  />
+  <input [(ngModel)]="newTopic.link" name="link" placeholder="Reference Link" />
+  <button type="submit">Add Topic</button>
+</form>
+
+<table class="topics-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Questions</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let topic of topics">
+      <td>{{ topic.id }}</td>
+      <td>
+        <input [(ngModel)]="topic.name" />
+      </td>
+      <td>{{ topic.questionsCount }}</td>
+      <td>
+        <button (click)="updateTopic(topic)">Save</button>
+        <button (click)="deleteTopic(topic.id)" class="delete">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

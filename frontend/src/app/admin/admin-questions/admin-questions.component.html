@@ -1,0 +1,55 @@
+<h2>Manage Questions</h2>
+
+<!-- Select Topic -->
+<div class="topic-selector">
+  <label for="topicSelect">Select Topic:</label>
+  <select
+    id="topicSelect"
+    [(ngModel)]="selectedTopicId"
+    (change)="loadQuestions()"
+  >
+    <option value="">-- Select --</option>
+    <option *ngFor="let topic of topics" [value]="topic.id">
+      {{ topic.name }}
+    </option>
+  </select>
+</div>
+
+<!-- Add Question -->
+<div class="add-question-form" *ngIf="selectedTopicId">
+  <input
+    [(ngModel)]="newQuestion.text"
+    name="questionText"
+    placeholder="Enter new question..."
+  />
+  <button (click)="addQuestion()">Add Question</button>
+</div>
+
+<!-- Questions Table -->
+<table class="questions-table" *ngIf="questions.length > 0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Question Text</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let question of questions">
+      <td>{{ question.id }}</td>
+      <td>
+        <input [(ngModel)]="question.text" />
+      </td>
+      <td>
+        <button (click)="updateQuestion(question)">Save</button>
+        <button (click)="deleteQuestion(question.id)" class="delete">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="selectedTopicId && questions.length === 0" class="no-questions">
+  No questions yet for this topic.
+</p>

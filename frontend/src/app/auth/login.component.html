@@ -1,0 +1,52 @@
+<mat-dialog-content>
+  <h2>Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" />
+      <mat-error *ngIf="username?.touched && username?.invalid">
+        <span *ngIf="username?.errors?.['required']">
+          Username is required.
+        </span>
+        <span *ngIf="username?.errors?.['minlength']">
+          Username must be at least 6 characters.
+        </span>
+        <span *ngIf="username?.errors?.['pattern']">
+          Username must contain only letters and numbers.
+        </span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" />
+      <mat-error *ngIf="password?.touched && password?.invalid">
+        <span *ngIf="password?.errors?.['required']">
+          Password is required.
+        </span>
+        <span *ngIf="password?.errors?.['minlength']">
+          Password must be at least 8 characters.
+        </span>
+        <span *ngIf="password?.errors?.['pattern']">
+          Password must include uppercase, lowercase, and a number.
+        </span>
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="loginForm.invalid || isLoading"
+    >
+      <span *ngIf="!isLoading">Login</span>
+      <span *ngIf="isLoading">Logging in...</span>
+    </button>
+
+    <div *ngIf="error" class="error">{{ error }}</div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()">Cancel</button>
+</mat-dialog-actions>

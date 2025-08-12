@@ -1,0 +1,18 @@
+<!-- src/app/questions/questions.component.html -->
+<div class="topics-container">
+  <h2>Interview Topics</h2>
+  <div class="topic-grid">
+    <div
+      *ngFor="let topic of topics"
+      class="topic-box"
+      (click)="navigateToTopic(topic.name)"
+    >
+      <img
+        [src]="'assets/images/' + topic.image"
+        alt="{{ topic.name }} icon"
+        class="topic-icon"
+      />
+      <span class="topic-name">{{ topic.name }}</span>
+    </div>
+  </div>
+</div>

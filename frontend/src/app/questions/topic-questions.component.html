@@ -1,0 +1,55 @@
+<!-- src/app/questions/topic-questions.component.html -->
+<div
+  class="topic-container"
+  *ngIf="!isLoading && !errorMessage; else loadingOrError"
+>
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button class="back-button" (click)="goBack()">← Back</button>
+    <button class="logout-button" *ngIf="isLoggedIn" (click)="logout()">
+      Logout
+    </button>
+  </div>
+
+  <!-- Topic Title -->
+  <h1 class="topic-title">Let's Learn {{ topic?.name }}</h1>
+
+  <!-- Main Content -->
+  <div class="content-box">
+    <!-- Importance Section -->
+    <section class="importance-section">
+      <h2 class="section-heading">Why is {{ topic?.name }} Important?</h2>
+      <p class="importance-text">
+        {{ topic?.description || "No description available for this topic." }}
+      </p>
+      <p class="info-link" *ngIf="topic?.link">
+        Reference:
+        <a [href]="topic.link" target="_blank">{{ topic.link }}</a>
+      </p>
+    </section>
+
+    <!-- Questions Section -->
+    <section class="questions-section">
+      <h2 class="section-heading">Top Interview Questions</h2>
+      <ul class="question-list" *ngIf="questions.length > 0; else noQuestions">
+        <li *ngFor="let question of questions" class="question-item">
+          <span class="q-icon">❓</span>
+          {{ question.text }}
+        </li>
+      </ul>
+    </section>
+
+    <!-- No Questions Template -->
+    <ng-template #noQuestions>
+      <p class="no-questions">No questions available for this topic yet.</p>
+    </ng-template>
+  </div>
+</div>
+
+<!-- Loading / Error Template -->
+<ng-template #loadingOrError>
+  <div class="loading-or-error">
+    <p *ngIf="isLoading">Loading topic data...</p>
+    <p *ngIf="!isLoading && errorMessage">{{ errorMessage }}</p>
+  </div>
+</ng-template>

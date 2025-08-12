@@ -1,0 +1,66 @@
+<mat-dialog-content>
+  <h2>Register</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" />
+      <mat-error *ngIf="username?.touched && username?.invalid">
+        <span *ngIf="username?.errors?.['required']"
+          >Username is required.</span
+        >
+        <span *ngIf="username?.errors?.['minlength']"
+          >Username must be at least 6 characters.</span
+        >
+        <span *ngIf="username?.errors?.['pattern']"
+          >Username must contain only letters and numbers.</span
+        >
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" />
+      <mat-error *ngIf="password?.touched && password?.invalid">
+        <span *ngIf="password?.errors?.['required']"
+          >Password is required.</span
+        >
+        <span *ngIf="password?.errors?.['minlength']"
+          >Password must be at least 8 characters.</span
+        >
+        <span *ngIf="password?.errors?.['pattern']"
+          >Password must include uppercase, lowercase, and a number.</span
+        >
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput type="password" formControlName="confirmPassword" />
+      <mat-error *ngIf="confirmPassword?.touched && confirmPassword?.invalid">
+        <span *ngIf="confirmPassword?.errors?.['required']"
+          >Confirm password is required.</span
+        >
+        <span *ngIf="confirmPassword?.errors?.['minlength']"
+          >Confirm password must be at least 8 characters.</span
+        >
+        <span
+          *ngIf="registerForm.hasError('mismatch') && confirmPassword?.touched"
+          >Passwords do not match.</span
+        >
+      </mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="registerForm.invalid"
+    >
+      Register
+    </button>
+  </form>
+  <ng-template #errorTemplate>
+    <p style="color: red">{{ error }}</p>
+  </ng-template>
+  <div *ngIf="error && !registerForm" class="error">{{ error }}</div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()">Cancel</button>
+</mat-dialog-actions>

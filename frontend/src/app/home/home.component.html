@@ -1,0 +1,115 @@
+<div class="homepage-container">
+  <mat-toolbar color="primary">
+    <span class="logo">Interview Prep App</span>
+    <span class="spacer"></span>
+
+    <button mat-button *ngIf="isLoggedIn && isAdmin" routerLink="/admin">
+      Admin Dashboard
+    </button>
+    <button mat-button *ngIf="isLoggedIn" routerLink="/topics">Topics</button>
+
+    <div class="button-group" *ngIf="!isLoggedIn">
+      <button mat-button (click)="openLoginDialog()">Login</button>
+      <button mat-button (click)="openRegisterDialog()">Register</button>
+    </div>
+
+    <button mat-button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+  </mat-toolbar>
+
+  <!-- ====== MAIN CAROUSEL ====== -->
+  <div class="content">
+    <div
+      class="carousel"
+      (mouseenter)="pauseAutoScroll()"
+      (mouseleave)="resumeAutoScroll()"
+    >
+      <div
+        class="slide"
+        *ngFor="let tech of technologies; let i = index"
+        [ngClass]="{ active: currentIndex === i }"
+      >
+        <img [src]="'assets/images/' + tech.image" [alt]="tech.name" />
+        <div class="text-overlay">{{ tech.text }}</div>
+      </div>
+
+      <div class="main-nav">
+        <button aria-label="Previous slide" (click)="prevSlide()">
+          &larr;
+        </button>
+        <button aria-label="Next slide" (click)="nextSlide()">&rarr;</button>
+      </div>
+
+      <div class="dots">
+        <span
+          *ngFor="let tech of technologies; let i = index"
+          [class.active]="currentIndex === i"
+          (click)="setIndex(i)"
+        ></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== PARTNERS ====== -->
+  <h3 class="partner-section-title">Trusted by learners & partners from</h3>
+  <div class="partner-wrapper">
+    <button
+      class="partner-btn left"
+      aria-label="Scroll partners left"
+      (click)="scrollPartners('left')"
+    >
+      &#8592;
+    </button>
+    <button
+      class="partner-btn right"
+      aria-label="Scroll partners right"
+      (click)="scrollPartners('right')"
+    >
+      &#8594;
+    </button>
+
+    <div class="partner-carousel" #partnerScroll>
+      <img src="assets/images/apple.png" alt="Apple" />
+      <img src="assets/images/meta.png" alt="Meta" />
+      <img src="assets/images/google.webp" alt="Google" />
+      <img src="assets/images/netflix.webp" alt="Netflix" />
+      <img src="assets/images/amazon.png" alt="Amazon" />
+      <img src="assets/images/intel.png" alt="Intel" />
+      <img src="assets/images/jp.jpg" alt="JP Morgan Chase" />
+      <img src="assets/images/oracle.jpg" alt="Oracle" />
+      <img src="assets/images/nike.jpg" alt="Nike" />
+      <img src="assets/images/nvidia.png" alt="Nvidia" />
+      <img src="assets/images/adobe.png" alt="Adobe" />
+      <img src="assets/images/dev.png" alt="Dev" />
+      <img src="assets/images/cisco.jpg" alt="Cisco" />
+      <img src="assets/images/zoom.png" alt="Zoom" />
+      <img src="assets/images/salesforce.png" alt="Salesforce" />
+    </div>
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="footer-links">
+      <div>
+        <h4>Explore</h4>
+        <a href="#">Web Development</a>
+        <a href="#">Data Science</a>
+        <a href="#">Certifications</a>
+      </div>
+      <div>
+        <h4>About</h4>
+        <a href="#">About us</a>
+        <a href="#">Contact</a>
+        <a href="#">Careers</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Interview Prep App. All rights reserved.</p>
+    </div>
+  </footer>
+</div>

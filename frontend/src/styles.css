@@ -1,0 +1,15 @@
+/* Import Angular Material theme */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* Reset and global styles */
+/* src/styles.css */
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+/* src/styles.css */
+.homepage-container {
+  background: linear-gradient(45deg, #000000, #333333) !important;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
