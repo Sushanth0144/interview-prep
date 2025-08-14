@@ -20,9 +20,14 @@ def create_app():
 
     CORS(
         app,
-        resources={r"/api/*": {"origins": app.config["CORS_ORIGINS"]}},
+        resources={r"/api/*": {"origins": app.config.get("CORS_ORIGINS", "*")}},
         supports_credentials=True
     )
+
+    # ---------- Health (for Render checks) ----------
+    @app.get("/api/health")
+    def health():
+        return {"ok": True}, 200
 
     # ---------------- Helpers ----------------
     def admin_required(fn):
@@ -190,7 +195,9 @@ def create_app():
     return app
 
 
+# WSGI entrypoint for Gunicorn
 app = create_app()
 
 if __name__ == "__main__":
+    # Local dev run (Render uses gunicorn with `main:app`)
     app.run(debug=True, host="0.0.0.0", port=5000)
