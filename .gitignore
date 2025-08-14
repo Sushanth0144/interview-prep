@@ -1,8 +1,9 @@
-cat > .gitignore << 'EOF'
 # Python
+.venv/
 venv/
 __pycache__/
 *.pyc
+.pytest_cache/
 instance/
 *.sqlite
 .env
@@ -10,10 +11,9 @@ instance/
 # Node / Angular
 frontend/node_modules/
 frontend/dist/
-*.log
+frontend/.angular/
 
 # OS / Editor
 .DS_Store
-.idea/
 .vscode/
-.DS_Store
+.idea/
