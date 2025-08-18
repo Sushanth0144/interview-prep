@@ -14,7 +14,7 @@ interface LoginResponse {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = environment.apiBaseUrl;   // <-- use env, not localhost
+  private apiUrl = environment.apiUrl;   // <-- use env, not localhost
   private tokenKey = 'token';
   private refreshTokenKey = 'refresh_token';
   private roleKey = 'role';
