@@ -10,19 +10,19 @@ export class TopicService {
   constructor(private http: HttpClient) {}
 
   getTopics() {
-    return this.http.get(`${environment.apiBaseUrl}/topics`);
+    return this.http.get(`${environment.apiUrl}/topics`);
   }
 
   getQuestions(topicId: number) {
-    return this.http.get(`${environment.apiBaseUrl}/topics/${topicId}/questions`);
+    return this.http.get(`${environment.apiUrl}/topics/${topicId}/questions`);
   }
 
   createTopic(data: any) {
-    return this.http.post(`${environment.apiBaseUrl}/topics`, data);
+    return this.http.post(`${environment.apiUrl}/topics`, data);
   }
 
   addQuestion(topicId: number, question: string) {
-    return this.http.post(`${environment.apiBaseUrl}/topics/${topicId}/questions`, {
+    return this.http.post(`${environment.apiUrl}/topics/${topicId}/questions`, {
       text: question,
     });
   }
